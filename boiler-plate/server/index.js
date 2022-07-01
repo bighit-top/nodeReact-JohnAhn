@@ -12,6 +12,7 @@ app.use(bodyParser.json()); //application/json
 app.use(cookieParser()); //cookie
 
 const mongoose = require('mongoose'); //mongoose로 애플리케이션과 mongodb를 연결
+const { application } = require('express');
 mongoose.connect(config.mongoURI)
     .then(() => console.log('MongoDB Connected!!'))
     .catch(err => console.log(err));
@@ -23,6 +24,11 @@ mongoose.connect(config.mongoURI)
 
 //메인페이지
 app.get('/', (req, res) => res.send('Hello World, This is Node+React test application.'));
+
+//클라이언트 통신 테스트 페이지
+app.get('/api/hello', (req, res) => {
+    res.send("하이~?");
+});
 
 //회원가입 정보 저장
 app.post('/api/users/register', (req, res) => {
