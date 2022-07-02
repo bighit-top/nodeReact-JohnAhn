@@ -75,7 +75,7 @@ app.post('/api/users/login', (req, res) => {
 
 //권한 인증
 app.get('/api/users/auth', auth, (req, res) => { //auth: token 인증 처리 middleware
-    res.status(200), json({
+    res.status(200).json({
         _id: req.user._id,
         isAdmin: req.user.role === 0 ? false : true,
         isAuth: true,
